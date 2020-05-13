@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='/style.css') }}">
+    <link rel='icon' href="{{url_for('static', filename='/fav.ico')}}" type='image/x-icon'/>
+    <meta charset="UTF-8">
+    <title>O projekte</title>
+</head>
+<header>
+    <nav class="navbar navbar-expand-sm navbar-dark bg-dark">
+        <a class="navbar-brand inactive" href=".">EKG Klasifikátor</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="navbar-collapse collapse" id="collapsibleNavbar">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item">
+                    <a class="nav-link active" href="">O projekte</a>
+                </li>
+            </ul>
+        </div>
+        <span class="navbar-text">Klasifikátor pre analýzu EKG signálu</span>
+    </nav>
+</header>
+<body>
+
+<div>
+    <div class="row no-gutters introduction ">
+        <div class="col text-center ">
+            <img src="{{url_for('static', filename='heartrate.png')}}" alt="Smiley face" height="100" width="120">
+            <h1 class="headTitle">EKG Klasifikátor</h1>
+            <h4 class="subTitle"> Klasifikátor pre analýzu EKG signálu</h4>
+        </div>
+    </div>
+    <div class="row no-gutters">
+        <div class="col text-center box">
+            <h3 class="sectionTitle">O projekte</h3>
+            <p class="textSection">
+                Projekt bol vedený ako diplomová práca pod vedeným Ing. Antona Kuzmu, Phd. Cieľom bolo vytvorenie
+                aplikácie, ktorá by bola schopná odhaliť prípadnú arytmiu srdca z EKG záznamu. Vstupom je .csv súbor,
+                v ktorom je uložený EKG záznam. Následne pomocou konvolučnej siete sa signál analyzuje a výsledok
+                sa zobrazí používateľovi. Aplikácia je schopná rozoznať 6 druhov arytmiií srdca.
+            </p>
+        </div>
+        <div class="col text-center box">
+            <h3 class="sectionTitle">Ako prebieha analýza?</h3>
+            <p class="textSection">
+                Po načítaní úvodnej stránky je používateľovi zobrazený element pre vloženie súboru. Po kliknutí na
+                tlačidlo sa zobrazí ponuka pre výber súboru. Je možné vložiť iba .csv súbor! V prípade,
+                že nastane chyba, používatelovi je zobrazená chybová hláška. Po stlačení tlačidla "Analyzuj" je
+                súbor odoslaný na server, kde prebehne predikcia a zároveň sa súbor uloží do databázy. Po skončení
+                je výsledok zobrazený používateľovi. Taktiež sa mu zobrazia vložené dáta v podobe grafu.
+            </p>
+        </div>
+        <div class="col text-center box">
+            <h3 class="sectionTitle">Použité technológie</h3>
+            <div class="alignImages">
+                <div class="part">
+                    <img
+                        src="{{url_for('static', filename='tensorflowkeras.png')}}"
+                        alt="tensorflowkeras logo"
+                        style="width:100%">
+                </div>
+                <div class="part">
+                    <img
+                        src="{{url_for('static', filename='python.png')}}"
+                        alt="python logo"
+                        style="width:50%">
+                </div>
+                <div class="part">
+                    <img
+                        src="{{url_for('static', filename='mongo.png')}}"
+                        alt="mongo logo"
+                        style="width:90%">
+                </div>
+                <div class="part">
+                    <img
+                        src="{{url_for('static', filename='flask.png')}}"
+                        alt="flask logo"
+                        style="width:60%">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+<script src="{{url_for('static', filename='/index.js')}}"></script>
+</body>
+</html>

@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='/style.css') }}">
+    <link rel='icon' href="{{url_for('static', filename='/fav.ico')}}" type='image/x-icon'/>
+    <meta charset="UTF-8">
+    <title>EKG Klasifikátor</title>
+</head>
+<header>
+    <nav class="navbar navbar-expand-sm navbar-dark bg-dark">
+        <a class="navbar-brand" href=".">EKG Klasifikátor</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="navbar-collapse collapse" id="collapsibleNavbar">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" href="{{url_for('about_page')}}">O projekte</a>
+                </li>
+            </ul>
+        </div>
+        <span class="navbar-text">Klasifikátor pre analýzu EKG signálu</span>
+    </nav>
+</header>
+<body>
+
+<div class="row layout no-gutters">
+    <div class="col-lg-4"></div>
+    <div class="col-lg-4  text-center">
+        <div id="load" style="display:none;">
+            <div id="loader"></div>
+            <img src="{{url_for('static', filename='/loader.svg')}}">
+            <div id="loaderText">Prebieha analýza</div>
+        </div>
+
+        <form class="justify-content-center" id="content" action="/predict" method="POST" enctype="multipart/form-data">
+            <div class="form-group">
+                <input type="file"
+                       class="custom-file-input"
+                       id="csv_file"
+                       name="csv_file"
+                       accept=".csv"
+                       oninput="fileSize(this);"
+                       required>
+                <label class="custom-file-label" for="csv_file">Vyberte .csv súbor pre EKG analýzu</label>
+            </div>
+            <div class="form-group text-center">
+                <button type="submit" id="subBtn" class="btn btn-secondary" onclick="loading();">Analyzuj</button>
+            </div>
+        </form>
+    </div>
+    <div class="col-lg-4 text-center">
+        {% with messages = get_flashed_messages() %}
+        {% if messages %}
+        <ul class="flashes">
+            {% for message in messages %}
+                <div class="message_flash">
+                    <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+                     <strong>Pozor!</strong> {{ message }}
+                </div>
+            {% endfor %}
+        </ul>
+        {% endif %}
+        {% endwith %}
+        {% block body %}
+        {% endblock %}
+    </div>
+</div>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+<script src="{{url_for('static', filename='/index.js')}}"></script>
+</body>
+</html>

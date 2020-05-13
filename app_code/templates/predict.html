@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='/style.css') }}">
+    <link rel='icon' href="{{url_for('static', filename='/fav.ico')}}" type='image/x-icon'/>
+    <meta charset="UTF-8">
+    <title>EKG Klasifikátor</title>
+</head>
+<header>
+    <nav class="navbar navbar-expand-sm navbar-dark bg-dark">
+        <a class="navbar-brand" href=".">EKG Klasifikátor</a>
+        <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarsExample03"
+                aria-controls="navbarsExample03" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="navbar-collapse collapse" id="navbarsExample03" style="">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" href="">O projekte</a>
+                </li>
+            </ul>
+        </div>
+        <span class="navbar-text">EKG klasifikátor pre analýzu EKG signálu</span>
+    </nav>
+</header>
+<body>
+<div class="row layoutPredict">
+    <div class="col-lg-8 text-center">
+        <canvas id="myChart" width="200" height="100"></canvas>
+    </div>
+
+    <div class="col-lg-4 text-center">
+        <table class="table table-hover table-bordered table-sm">
+            <thead class="thead-dark">
+            <tr>
+                <th>Zistenie</th>
+                <th>Vzorka</th>
+            </tr>
+            </thead>
+            <tbody>
+                {% for key, value in output.items() %}
+                    {% for each in value %}
+                        <tr>
+                            <td>{{key}}</td>
+                            <td>{{each}}</td>
+                        </tr>
+                    {% endfor %}
+                {% endfor %}
+            </tbody>
+        </table>
+        <button id="showButton" class="btn btn-secondary" onclick="showTable()">Vysvetlenie skratiek</button>
+        <table id="tableToShow" class="table table-hover table-bordered table-sm">
+            <thead class="thead-dark">
+            <tr>
+                <th>Signál</th>
+                <th>Skratka</th>
+            </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Normálny rytmus</td>
+                    <td>NOR</td>
+                </tr>
+                <tr>
+                    <td>Blok vetvy ľavého zväzku</td>
+                    <td>LBB</td>
+                </tr>
+                <tr>
+                    <td>Blok vetvy pravého zväzku</td>
+                    <td>RBB</td>
+                </tr>
+                <tr>
+                    <td>Predčasný rytmus predsiení</td>
+                    <td>APC</td>
+                </tr>
+                <tr>
+                    <td>Porucha rytmu</td>
+                    <td>PAB</td>
+                </tr>
+                <tr>
+                    <td>Predčasná komorová kontrakcia</td>
+                    <td>PVC</td>
+                </tr>
+                <tr>
+                    <td>Komorový únikový rytmus</td>
+                    <td>VEB</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+<script src="{{url_for('static', filename='/predict.js')}}"></script>
+<script>
+    createChart({{ values|tojson }}, {{ bad|tojson }});
+</script>
+</body>
+</html>

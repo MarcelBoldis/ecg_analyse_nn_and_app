@@ -1,0 +1,2 @@
+!unzip "/content/drive/My Drive/Diplomovka/data_aug/RBB_aug.zip" -d "/content/drive/My Drive/Diplomovka/image_data/"
+!mv "/content/drive/My Drive/Diplomovka/image_data/VEB/"* "/content/drive/My Drive/Diplomovka/image_data/VEB_aug"

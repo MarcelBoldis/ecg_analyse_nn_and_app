@@ -1,0 +1,197 @@
+body{
+   min-width: 700px;        /* Suppose you want minimum width of 1000px */
+   width: auto !important;  /* Firefox will set width as auto */
+   width: 700px;            /* As IE6 ignores !important it will set width as 1000px; */
+min-height: 100%;
+    hight: 100%;
+}
+
+.layout {
+    margin-top: 10em;
+}
+
+.layoutPredict {
+    margin: 5em 1em;
+}
+.nav-link {
+    color: rgba(255,255,255,.5) !important;
+}
+
+.nav-link:hover {
+    color: rgba(255,255,255,1) !important;
+}
+
+.message_flash {
+    padding: 20px;
+    margin-bottom: 20px;
+    background-color: #982828;
+    color: white;
+}
+
+.closebtn {
+  margin-left: 15px;
+  color: white;
+  font-weight: bold;
+  float: right;
+  font-size: 22px;
+  line-height: 20px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.closebtn:hover {
+  color: black;
+}
+
+.active {
+    color: white !important;
+}
+
+.inactive {
+    color: rgba(255,255,255,.5) !important;
+}
+.inactive:hover {
+    color: rgba(255,255,255,1) !important;
+}
+
+.introduction {
+    background-color: rgba(11,88,118,1) !important;
+    padding: 2.5em;
+}
+
+.headTitle {
+    color: rgba(255,255,255,1) !important;;
+    font-size: 2.7em;
+    line-height: 1.5em;
+    font-weight: normal;
+}
+
+.subTitle {
+    color: rgba(255,255,255,1) !important;;
+    font-size: 1.5em;
+    line-height: 1.5em;
+    font-weight: 100;
+    margin-top: .5em;
+}
+
+.sectionTitle {
+    margin: 1em 0;
+    color: rgba(52,58,64,1) !important;
+    font-size: 1.5em;
+    font-weight: 500;
+}
+
+.box {
+    padding: 1em 0;
+}
+
+.textSection{
+    padding: 0 2em;
+    letter-spacing: 0.15em;
+    line-height: 180%;
+    font-size: 1.2em;
+}
+
+.part {
+    float: left;
+    width: 50%;
+    padding: 5px;
+}
+
+.alignImages {
+    content: "";
+    clear: both;
+    display: table;
+    padding: 25px;
+}
+
+#showButton {
+    margin: 5px;
+}
+
+#tableToShow {
+    display: none;
+}
+
+@media only screen and (max-width: 1250px) {
+    .introduction {
+    padding: 40px;
+    }
+}
+
+@media only screen and (max-width: 1100px) {
+    .introduction {
+    padding: 20px;
+    }
+
+    .textSection{
+    padding: 0 20px;
+    letter-spacing: 0.1em;
+    line-height: 140%;
+    }
+}
+
+@media only screen and (max-width: 830px) {
+    .introduction {
+    padding: 10px;
+    }
+
+    .textSection{
+    padding: 0 20px;
+    letter-spacing: 0.08em;
+    }
+
+    .part {
+    width: 100%;
+    }
+}
+
+@media (max-height: 800px) {
+    .introduction {
+    padding: 1.5em;
+    }
+
+    .headTitle {
+        font-size: 1.5em;
+        line-height:.7em;
+    }
+
+    .subTitle {
+        font-size: 23px;
+        line-height: 30px;
+        margin-top: 15px;
+    }
+
+    .sectionTitle {
+        margin: .5em 0;
+        font-size: 1.3em;
+    }
+
+    .textSection {
+        padding: 0 1em;
+        letter-spacing: 0.07em;
+        font-size: 1.2em;
+    }
+
+    .box {
+    padding: .5em 0;
+    }
+}
+
+@media (max-height: 800px) {
+    .sectionTitle {
+        margin: .3em 0;
+        font-size: 1.2em;
+    }
+
+    .textSection {
+        padding: 0 1em;
+        letter-spacing: 0.05em;
+        font-size: 1em;
+    }
+}
+
+#loaderText {
+    font-size: 1.5em;
+    margin: 2em;
+}
